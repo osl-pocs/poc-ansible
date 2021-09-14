@@ -8,7 +8,5 @@ services:
       args:
         - MY_TOKEN=${MY_TOKEN}
     hostname: poc-ansible-service1
-    env_file:
-      - ../.env
     ports:
       - "29999:29999"

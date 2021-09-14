@@ -40,3 +40,7 @@
       become: yes
       pip:
         name: docker-compose
+
+    - name: Add docker group
+      become: yes
+      shell: "usermod -aG docker $(whoami) && newgrp docker"
