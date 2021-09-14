@@ -1,13 +1,17 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: all
+  connection: ssh
 
   tasks:
     - name: Create and start services
       docker_compose:
-        build: yes
-        remove_orphans: yes
-        debug: yes
+        project_name: services-group
+        definition:
+            service:
+              build: "../services/Dockerfile"
+              command: "python -m http.server 29999"
+              ports:
+                - "29999:29999"
       async: 900
       poll: 05
       register: output

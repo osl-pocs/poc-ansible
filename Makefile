@@ -5,18 +5,23 @@ DOCKER_GET_HOST_ID:=docker ps -aqf "name=poc-ansible-host"
 DOCKER_SERVICES:=docker-compose -f services/docker-compose.yaml
 DOCKER_HOST:=docker-compose -f host/docker-compose.yaml
 
-build-host:
+docker-host-build:
 	$(DOCKER_HOST) build
 
-start-host:
+docker-host-start:
 	$(DOCKER_HOST) up -d
 
-build-service:
+docker-host-stop:
+	$(DOCKER_HOST) stop
+
+docker-service-build:
 	$(DOCKER_SERVICES) build
 
-start-service:
+docker-service-start:
 	$(DOCKER_SERVICES) up -d
 
+docker-service-stop:
+	$(DOCKER_SERVICES) stop
 
 docker-get-host-ip:
 	@$(DOCKER_GET_IP) `$(DOCKER_GET_HOST_ID)`
@@ -29,4 +34,7 @@ ansible-ping:
 	@ansible all -m ping
 
 test-ansible:
-	ansible-playbook -i inventory tests/playbooks/simple.yml
+	ansible-playbook tests/playbooks/simple.yml
+
+deploy:
+	ansible-playbook --verbose playbooks/main.yaml

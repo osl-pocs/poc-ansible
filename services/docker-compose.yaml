@@ -11,4 +11,4 @@ services:
     env_file:
       - .env
     ports:
-      - "7777:8000"
+      - "29999:29999"

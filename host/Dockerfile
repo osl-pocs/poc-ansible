@@ -23,6 +23,11 @@ ARG USERID
 
 RUN adduser --disabled-password --uid ${USERID} ${USERNAME} 
 
+# PREPARE SUDO
+
+RUN echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer \
+    && chmod 0440 /etc/sudoers.d/developer
+
 USER $USERNAME
 
 # PREPARE AUTHORIZED KEYS
