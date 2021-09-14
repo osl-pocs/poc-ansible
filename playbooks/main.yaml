@@ -1,4 +1,4 @@
 ---
-# - import_playbook: install.yaml
-# - import_playbook: repository.yaml
+- import_playbook: install.yaml
+- import_playbook: repository.yaml
 - import_playbook: services.yaml
