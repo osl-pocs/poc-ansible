@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Create and start services
+      docker_compose:
+        build: yes
+        remove_orphans: yes
+        debug: yes
+      async: 900
+      poll: 05
+      register: output
+
+    - name: Debug output of docker-compose
+      debug:
+        var: output

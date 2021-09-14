@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  poc-ansible-host:
+    build:
+      context: ..
+      dockerfile: ./host/Dockerfile
+      args:
+        - USERNAME=${USER}
+        - USERID=${UID:-1000}
+    image: poc-ansible-host
+    env_file:
+      - .env
+    ports:
+      - "9999:9999"
+      - "2222:2222"
