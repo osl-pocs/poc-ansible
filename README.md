@@ -1,5 +1,10 @@
 # poc-ansible
 
+## SSH public key
+
+Copy your ssh public key into the folder `./secrets/ssh` with the name
+`host.pub`.
+
 ## Environment
 
 Install the conda environment with ansible command:
