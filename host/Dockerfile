@@ -41,6 +41,11 @@ USER root
 # fix permission for host.pub
 RUN chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.ssh/authorized_keys
 
+RUN mkdir -p /opt/app/ \
+  && chmod 777 /opt/app/
+
+WORKDIR /opt/app
+
 ENTRYPOINT [ "/opt/poc-ansible/entrypoint.sh" ]
 
 # used just to open a socket and keep the container running

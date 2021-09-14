@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: ssh
+
+  tasks:
+
+    - name: Clone/Update repository
+      git:
+        repo: "https://github.com/xmnlab/poc-ansible"
+        dest: "/opt/app"
+        force: yes
+        version: main

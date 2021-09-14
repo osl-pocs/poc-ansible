@@ -5,13 +5,13 @@
   tasks:
     - name: Create and start services
       docker_compose:
-        project_name: services-group
-        definition:
-            service:
-              build: "../services/Dockerfile"
-              command: "python -m http.server 29999"
-              ports:
-                - "29999:29999"
+        project_src: /opt/app
+        files:
+          - "services/docker-compose.yaml"
+        build: yes
+        remove_orphans: yes
+        debug: yes
+        state: present
       async: 900
       poll: 05
       register: output

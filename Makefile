@@ -14,6 +14,9 @@ docker-host-start:
 docker-host-stop:
 	$(DOCKER_HOST) stop
 
+docker-host-bash:
+	$(DOCKER_HOST) exec poc-ansible-host bash
+
 docker-service-build:
 	$(DOCKER_SERVICES) build
 

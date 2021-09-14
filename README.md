@@ -89,3 +89,10 @@ For running the ansible command, type:
 ```sh
 $ ansible-playbook playbooks/main.yaml
 ```
+
+
+## References
+
+**Special Ansible Variables**:
+
+* https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html
