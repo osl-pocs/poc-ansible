@@ -5,13 +5,10 @@
   tasks:
     - name: Create and start services
       docker_compose:
-        project_src: /opt/app
-        files:
-          - "services/docker-compose.yaml"
+        project_src: /opt/app/services
         build: yes
         remove_orphans: yes
         debug: yes
-        state: present
       async: 900
       poll: 05
       register: output
