@@ -1,14 +1,21 @@
 
 DOCKER_GET_IP:=docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
 DOCKER_GET_HOST_ID:=docker ps -aqf "name=poc-ansible-host"
-DOCKER_COMPOSE:=docker-compose -f services/docker-compose.yaml
 
+DOCKER_SERVICES:=docker-compose -f services/docker-compose.yaml
+DOCKER_HOST:=docker-compose -f host/docker-compose.yaml
 
-build_host:
-	$(DOCKER_COMPOSE) build
+build-host:
+	$(DOCKER_HOST) build
 
-deploy_host:
-	$(DOCKER_COMPOSE) up -d
+start-host:
+	$(DOCKER_HOST) up -d
+
+build-service:
+	$(DOCKER_SERVICES) build
+
+start-service:
+	$(DOCKER_SERVICES) up -d
 
 
 docker-get-host-ip:
@@ -21,5 +28,5 @@ update-inventory:
 ansible-ping:
 	@ansible all -m ping
 
-test_ansible:
-	ansible-playbook -i inventory playbook.yml
+test-ansible:
+	ansible-playbook -i inventory tests/playbooks/simple.yml
