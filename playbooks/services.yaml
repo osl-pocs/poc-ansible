@@ -3,15 +3,16 @@
   connection: ssh
 
   tasks:
+
     - name: Create and start services
       docker_compose:
-        project_src: /opt/app/services
+        project_src: /opt/app/services/
+        files:
+          - docker-compose.yaml
         build: yes
         remove_orphans: yes
         debug: yes
-      async: 900
-      poll: 05
-      register: output
+        state: present
 
     - name: Debug output of docker-compose
       debug:
