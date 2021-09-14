@@ -1,1 +1,2 @@
-172.20.0.2 ansible_port=2222
+[docker]
+DOCKER_HOST 172.20.0.2 ansible_port=2222
