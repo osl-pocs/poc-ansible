@@ -1,13 +1,13 @@
-version: '3'
+version: '3.4'
 
 services:
   poc-ansible-service:
     build:
-      context: ..
+      context: ".."
       dockerfile: ./services/Dockerfile
       args:
         - MY_TOKEN=${MY_TOKEN}
-    image: poc-ansible-service
+    hostname: poc-ansible-service
     env_file:
       - .env
     ports:
