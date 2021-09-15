@@ -4,23 +4,23 @@ services:
   poc-ansible-host:
     image: poc-ansible-host
     privileged: true
-    networks:
-      - host
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     build:
       context: ..
       dockerfile: ./host/Dockerfile
       args:
         - USERNAME=${USER}
         - USERID=${UID:-1000}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - .env
+    # networks:
+    #     - host
     ports:
       - "9999:29999"
       - "2222:2222"
 
-networks:
-  host:
-    external:
-      name: host
+# networks:
+#   host:
+#     external:
+#       name: host

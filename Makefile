@@ -5,9 +5,12 @@ DOCKER_GET_HOST_ID:=docker ps -aqf "name=poc-ansible-host"
 DOCKER_SERVICES:=docker-compose -f services/docker-compose.yaml
 DOCKER_HOST:=docker-compose -f host/docker-compose.yaml
 
-docker-dind:
+docker-dind-stop:
+	docker stop `docker ps -aqf "name=poc-ansible-dind"` || true
+
+docker-dind-start: docker-dind-stop
 	docker run \
-		--name dind-poc-ansible -d \
+		--name poc-ansible-dind \
 		--privileged \
     	--network host \
 		--rm \
@@ -17,7 +20,6 @@ docker-host-build:
 	$(DOCKER_HOST) build
 
 docker-host-start:
-	$(MAKE) docker-dind
 	$(DOCKER_HOST) up -d
 
 docker-host-stop:

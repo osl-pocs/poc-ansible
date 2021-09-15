@@ -1,0 +1,12 @@
+- hosts: all
+  connection: ssh
+
+  tasks:
+    - name: Add docker group
+      become: yes
+      shell: usermod -aG docker $(whoami)
+
+
+    - name: Add docker group
+      become: yes
+      shell: id -g && newgpr docker
