@@ -5,6 +5,7 @@
   tasks:
 
     - name: Create and start services
+      become: yes
       docker_compose:
         project_src: /opt/app/services/
         files:
