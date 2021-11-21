@@ -1,12 +1,14 @@
 version: '3.4'
 
 services:
-  poc-ansible-service1:
+  poc-ansible-service:
     build:
       context: ".."
       dockerfile: ./services/Dockerfile
       args:
         - MY_TOKEN=${MY_TOKEN}
-    hostname: poc-ansible-service1
+    hostname: poc-ansible-service
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "29999:29999"

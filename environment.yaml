@@ -4,3 +4,4 @@ channels:
 dependencies:
   - ansible
   - docker-compose
+  - make

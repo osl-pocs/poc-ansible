@@ -32,12 +32,6 @@
         name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
         update_cache: yes
 
-    - name: Install prerequisites for docker-compose
+    - name: Install prerequisites
       become: yes
-      apt:
-        name: ['python3-pip', 'python3-setuptools', 'virtualenv']
-
-    - name: Install docker-compose
-      become: yes
-      pip:
-        name: docker-compose
+      shell: bash /opt/app/run-with-conda.sh mamba env create --file /opt/app/environment.yaml

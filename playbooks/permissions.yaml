@@ -4,9 +4,8 @@
   tasks:
     - name: Add docker group
       become: yes
-      shell: usermod -aG docker $(whoami)
+      shell: echo $(whoami) && usermod -aG docker $(whoami)
 
-
-    - name: Add docker group
-      become: yes
-      shell: id -g && newgpr docker
+    # - name: Update user group
+    #   become: yes
+    #   shell: id -g && newgrp docker

@@ -4,4 +4,4 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ARG MY_TOKEN
 
-RUN python -m http.server 29999
+CMD "python -m http.server 29999"
