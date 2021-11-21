@@ -8,6 +8,7 @@ services:
       args:
         - MY_TOKEN=${MY_TOKEN}
     hostname: poc-ansible-service
+    command: bash /opt/app/conda-activate.sh python -m http.server 29999
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:

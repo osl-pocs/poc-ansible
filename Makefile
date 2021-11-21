@@ -51,4 +51,4 @@ test-ansible:
 	ansible-playbook tests/playbooks/simple.yml
 
 deploy:
-	ansible-playbook --verbose playbooks/main.yaml
+	ansible-playbook -vvv playbooks/main.yaml

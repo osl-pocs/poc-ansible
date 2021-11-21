@@ -1,1 +1,1 @@
-172.18.0.2 ansible_port=2222
+172.18.0.2  ansible_port=2222   ansible_user=xmn

@@ -3,7 +3,7 @@
   connection: ssh
 
   tasks:
-  
+
     - name: Update and upgrade apt packages
       become: yes
       apt:
@@ -32,6 +32,9 @@
         name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
         update_cache: yes
 
-    - name: Install prerequisites
+    - name: Change conda permissions
       become: yes
-      shell: bash /opt/app/run-with-conda.sh mamba env create --file /opt/app/environment.yaml
+      shell: chmod -R ug+w /opt/conda
+
+    - name: Install prerequisites
+      shell: bash /opt/app/run-with-conda.sh mamba env create --file /opt/app/environment.yaml --force
